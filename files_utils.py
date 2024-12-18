@@ -120,6 +120,6 @@ def read_yaml(file_path: str, encoding: str = "utf-8") -> dict:
     '''функция читающая YAML-файл и возвращающая словарь python'''
     with open('test.yaml', 'r', encoding="utf-8") as file:
         data = yaml.safe_load(file)
-        return data
+    return data
 
 # print(read_yaml('test.yaml'))# принтуем результат функции чтения и записи
