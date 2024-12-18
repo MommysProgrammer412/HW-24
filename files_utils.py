@@ -1,6 +1,6 @@
 import json
 import csv
-# import yaml
+import yaml
 
 JSON_DICT = {
     'intricately': True,
@@ -85,7 +85,7 @@ def write_txt(data, file_path, encoding: str = "utf-8") -> None:
     with open('test.txt', 'w', encoding="utf-8") as file:
         file.write(str(TXT_STR) + '\n')
 
-write_txt(TXT_STR, 'test.txt')# вызываем функцию для записи, результат увидим в следующей функции чтения
+# write_txt(TXT_STR, 'test.txt')# вызываем функцию для записи, результат увидим в следующей функции чтения
 
 def read_txt(file_path, encoding: str = "utf-8") -> str:
     '''функция читающая текстовый файл и возвращающая строку'''
@@ -93,7 +93,7 @@ def read_txt(file_path, encoding: str = "utf-8") -> str:
         data = file.read()
     return data
 
-print(read_txt('test.txt'))# принтуем результат функции чтения и записи
+# print(read_txt('test.txt'))# принтуем результат функции чтения и записи
 
 NEW_TXT_STR = 'new string for test.txt'
 
@@ -102,5 +102,24 @@ def append_txt(data, file_path, encoding: str = "utf-8") -> None:
     with open('test.txt', 'a', encoding="utf-8") as file:
         file.write(str(NEW_TXT_STR) + '\n')
 
-append_txt(NEW_TXT_STR, 'test.txt')# Вызываем функцию для добавления NEW_TXT_STR в test.txt
-print(read_txt('test.txt'))# Проверяем результат, читая обновленный файл
+# append_txt(NEW_TXT_STR, 'test.txt')# Вызываем функцию для добавления NEW_TXT_STR в test.txt
+# print(read_txt('test.txt'))# Проверяем результат, читая обновленный файл
+
+#--------------------------------------------------------------------------------
+
+YAML_DICT = {
+    'temp': 25,
+    "feels_like": 23,
+    'description': "light rain",
+}
+
+with open('test.yaml', 'w', encoding='utf-8') as file:
+    yaml.dump(YAML_DICT, file, allow_unicode=True)
+
+def read_yaml(file_path: str, encoding: str = "utf-8") -> dict:
+    '''функция читающая YAML-файл и возвращающая словарь python'''
+    with open('test.yaml', 'r', encoding="utf-8") as file:
+        data = yaml.safe_load(file)
+        return data
+
+# print(read_yaml('test.yaml'))# принтуем результат функции чтения и записи
